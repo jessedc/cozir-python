@@ -77,11 +77,15 @@ These are GPIO 14 (pin 8) (TXD), and 15 (pin 10) (RXD). 3.3v is Pin 1.
 
 http://ozzmaker.com/i2c/
 
-## Python
+## Python3
+
+Raspbian buster has python 3 `which python3`.
+
+See Raspberry pi documentation on installing python packages: https://www.raspberrypi.org/documentation/linux/software/python.md
 
 ```
-sudo apt install -y python-pip
-pip install --user pyserial
+sudo apt install -y python-pip3
+pip3 install --user pyserial
 ```
 
 ## Links
