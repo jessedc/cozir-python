@@ -7,7 +7,7 @@ A work in progress set of python tools to read data from the [COZIR-A sensor](ht
 ### Goals
 
 - Document the process of setting up a raspberry pi from scratch
-- Document the appropriate way to run python scripts on a rapberry pi
+- Document the appropriate way to run python scripts on a raspberry pi
 - Connect and read COZIR vales
 - Create a remote python development environment
 
@@ -85,12 +85,52 @@ See Raspberry pi documentation on installing python packages: https://www.raspbe
 
 ```
 sudo apt install -y python-pip3
-pip3 install --user pyserial
+python3 -m pip install --user pyserial
+```
+
+## InfluxDB
+
+Install (Stretch)
+
+```
+wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+echo "deb https://repos.influxdata.com/debian stretch stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+```
+
+Start
+
+```
+sudo service influxdb start|restart
+```
+
+Config 
+
+```
+sudo nano /etc/influxdb/influxdb.conf
+```
+
+## Grafana
+
+https://grafana.com/docs/installation/debian/
+https://grafana.com/grafana/download?platform=arm
+
+*Links (with good examples)*
+http://blog.centurio.net/2018/10/28/howto-install-influxdb-and-grafana-on-a-raspberry-pi-3/
+https://www.circuits.dk/install-grafana-influxdb-raspberry/
+
+```
+wget https://dl.grafana.com/oss/release/grafana_6.3.5_armhf.deb 
+sudo dpkg -i grafana_6.3.5_armhf.deb
+```
+
+```
+sudo systemctl enable grafana-server.service
+sudo systemctl start grafana-server
 ```
 
 ## Links
 
-- [Raspberrypi Pin out](https://pinout.xyz)
+- [Raspberry pi Pin out](https://pinout.xyz)
 
 /dev/tty.usbserial-MG8ZKS
 
