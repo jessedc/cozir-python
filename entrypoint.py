@@ -3,6 +3,10 @@
 
 from cozir_python.linereader import LineReader
 from cozir_python.influx import points_from_line
+from influxdb import InfluxDBClient
+
+# FIXME: Remove this from the global scope here
+client = InfluxDBClient(host='pi.hole', port=8086)
 
 
 def on_read_line_callback(line):
@@ -11,6 +15,7 @@ def on_read_line_callback(line):
         return
 
     points = points_from_line(line)
+    client.write_points(points, database='airquality')
 
     print(points)
 
